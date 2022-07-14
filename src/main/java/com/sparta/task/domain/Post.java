@@ -1,12 +1,16 @@
 package com.sparta.task.domain;
 
+import com.sparta.task.base.Timestamped;
+import com.sparta.task.dto.PostDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Post extends Timestamped {
 
@@ -19,7 +23,7 @@ public class Post extends Timestamped {
     private String title;
 
     @Column(nullable = false)
-    private String name;
+    private String username;
 
     @Column(nullable = false)
     private String contents;
@@ -30,7 +34,7 @@ public class Post extends Timestamped {
     // Dto 생성자
     public Post(PostDto postDto) {
         this.title = postDto.getTitle();
-        this.name = postDto.getName();
+        this.username = postDto.getUsername();
         this.contents = postDto.getContents();
         this.checkNum = postDto.getCheckNum();
 

@@ -1,14 +1,15 @@
 package com.sparta.task.controller;
 
 import com.sparta.task.domain.Post;
-import com.sparta.task.domain.PostDto;
-import com.sparta.task.domain.PostRepository;
+import com.sparta.task.dto.PostDto;
+import com.sparta.task.repository.PostRepository;
+import com.sparta.task.security.UserDetailsImpl;
 import com.sparta.task.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,8 +26,9 @@ public class PostController {
 
     // 게시글 생성
     @PostMapping("/api/posts")
-    public Post createPost(@RequestBody PostDto postDto) {
+    public Post createPost(@RequestBody PostDto postDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Post post = new Post(postDto);
+        post.setUsername(userDetails.getUsername());
         return postRepository.save(post);
     }
 

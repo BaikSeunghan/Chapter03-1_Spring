@@ -1,8 +1,8 @@
 package com.sparta.task.service;
 
 import com.sparta.task.domain.Post;
-import com.sparta.task.domain.PostDto;
-import com.sparta.task.domain.PostRepository;
+import com.sparta.task.dto.PostDto;
+import com.sparta.task.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

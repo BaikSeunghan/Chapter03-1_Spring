@@ -1,4 +1,4 @@
-package com.sparta.task.domain;
+package com.sparta.task.base;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

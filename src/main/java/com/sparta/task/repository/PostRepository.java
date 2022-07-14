@@ -1,5 +1,6 @@
-package com.sparta.task.domain;
+package com.sparta.task.repository;
 
+import com.sparta.task.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

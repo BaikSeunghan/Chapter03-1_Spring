@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -301,6 +301,8 @@
                 }
             })()
         }
+
+        // 게시글 조회
         function showContents(id, title, name, modifiedAt, contents) {
             (async () => {
                 const { value: getName } = await Swal.fire({
@@ -308,8 +310,6 @@
                     text: '작성자:' + name + ' 작성날짜: ' + modifiedAt + ' 작성내용: '+contents,
 
                 })
-
-
             })()
         }
 
@@ -394,9 +394,9 @@
                         </div>
                         <!-- 버튼 영역-->
                         <div class="footer">
-                            <img id="${id}-edit" class="icon-start-edit" src="images/edit.png" alt="" onclick="editPost('${id}')">
-                            <img id="${id}-delete" class="icon-delete" src="images/delete.png" alt="" onclick="deleteOne('${id}')">
-                            <img id="${id}-submit" class="icon-end-edit" src="images/done.png" alt="" onclick="submitEdit('${id}')">
+                            <img id="${id}-edit" class="icon-start-edit" src="/images/edit.png" alt="" onclick="editPost('${id}')">
+                            <img id="${id}-delete" class="icon-delete" src="/images/delete.png" alt="" onclick="deleteOne('${id}')">
+                            <img id="${id}-submit" class="icon-end-edit" src="/images/done.png" alt="" onclick="submitEdit('${id}')">
                         </div>
                     </div>`;
             // 2. #cards-box 에 HTML을 붙인다.
@@ -505,6 +505,11 @@
 <div class="wrap">
     <div class="header">
         <h2>항해99 블로그</h2>
+        <p><span th:text="${username}"></span> 님</p>
+        <form id="my_form" method="post" action="/user/logout">
+            <a id="logout-text" href="javascript:{}" onclick="document.getElementById('my_form').submit();">로그아웃</a>
+<!--            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+        </form>
 <!--        <p>-->
 <!--            안녕하세요. 항해99 블로그입니다-->
 <!--        </p>-->
@@ -517,7 +522,7 @@
                   rows="10"></textarea>
         <!--            <button class="btn btn-danger" onclick="writePost()">작성하기</button>-->
         <input type="password" id="checkNum" name="checkNum" placeholder="비밀번호 숫자 4자리" class="area-study" maxlength="4">
-        <img src="images/send.png" alt="" onclick="writePost()">
+        <img src="/images/send.png" alt="" onclick="writePost()">
     </div>
     <div id="cards-box" class="area-read">
 <!--        <div class="card">-->
